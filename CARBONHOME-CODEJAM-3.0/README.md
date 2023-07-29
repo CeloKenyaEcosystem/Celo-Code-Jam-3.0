@@ -1,5 +1,73 @@
 # Retiring Carbon Credits on Celo using Toucan SDK
 
+# CarbonHero
+## By Dennis Kimathi 
+
+## Screenshot
+ ![image](./toucanproject)
+
+ ## Table of Content
+ - [Description](#description)
+ - [Features](#features)
+ - [Requirements](#requirements)
+ - [Installation Process](#installation-Process)
+ - [Live Link](#Live-Link)
+ - [Technology  Used](#technology-Used)
+ - [Tutorial](#license)
+ - [Authors Info](#Authors-Info)
+
+
+
+
+[Go Back to the top](#CarbonHero)
+## Features
+1. As a user, I want to redeem NCT for TCO2 - Tokenized Carbon Credit.
+2. A user can retire TC02
+3. A user can view their TC02 retired.
+4. A user can view details of TC02 available on toucan alfajores subgraph. 
+
+
+[Go Back to the top](#CarbonHero)
+
+ ###  Requirements
+ * Access to  a computer 
+ * Access to internet
+
+ ### Installation Process
+ ****
+* Clone to the repo : git clone https://github.com/DennohKim/toucan-protocol-sdk
+* In the root directory, run the following command to install the packages ``` yarn```.
+* Run `yarn react-app:dev` to launch the app
+
+ ****
+ [Go Back to the top](#CarbonHero)
+
+### Live Link
+- Click this link to view the live application https://toucan-protocol-sdk-react-app.vercel.app/
+
+### Technology  Used
+
+- [Celo-composer](https://github.com/celo-org/celo-composer)
+
+Celo Composer is built on Celo to make it simple to build dApps using a variety of front-end frameworks, and libraries.
+
+- [Celo](https://celo.org/)
+- [Solidity](https://docs.soliditylang.org/en/v0.8.19/)
+- [Next.js](https://nextjs.org/)
+- [React.js](https://reactjs.org/)
+- [Shadcn UI](https://ui.shadcn.com/)
+- [Rainbowkit-celo](https://github.com/celo-org/rainbowkit-celo)
+
+- [Toucan-SDK](https://docs.toucan.earth/toucan/dev-resources/sdk)
+
+
+
+
+[Go Back to the top](#CarbonHero)
+
+
+### Tutorial
+
 Retire Carbon Credits on Celo using ToucanSDK
 Learn how to make your dApp climate positive with a few lines of code.
 Climate change is real, and thinking of our carbon footprint when building software should be part of the planning process as much as thinking about the architecture. One blockchain that is leading in this regard is Celo blockchain, and they are even offsetting more carbon than they are producing. So, if your choice of network for your application is Celo, you already made a step in the right direction. But other actions can increase your or your users carbon footprint and, in this tutorial, you will learn how to account for that in a few lines of code and create a climate positive app. If you are new to carbon credit retirements and what kind of infrastructure tools Toucan provides, make sure to read up on it in their blog.
@@ -473,3 +541,6 @@ Congratulations! You've build your first climate positive app. Now go explore mo
 - Toucan's [documentation](https://docs.toucan.earth/toucan/dev-resources/toucan-developer-resources)
 - Toucan's [SDK](https://github.com/ToucanProtocol/toucan-sdk)
 - Toucan's [blog](https://blog.toucan.earth)
+
+## Authors Info
+Contributors - [Dennis Kimathi](https://github.com/DennohKim)
