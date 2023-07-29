@@ -68,7 +68,7 @@ export default function CarbonCredits() {
   return (
     <div className='bg-white'>
       <div className='mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <h2 className='text-3xl pb-10 text-center font-bold text-gray-900'>
+        <h2 className='text-3xl pb-10 text-center font-bold font-display text-gray-900'>
           Discover Carbon Credits to offset your carbon footprint
         </h2>
 

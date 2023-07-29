@@ -271,7 +271,7 @@ export default function Example() {
 
           {/* Product info */}
           <div className='mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0'>
-            <h1 className='text-3xl font-bold tracking-tight text-gray-900'>
+            <h1 className='text-3xl font-bold font-display tracking-tight text-gray-900'>
               {name}
             </h1>
 

@@ -1,13 +1,13 @@
 # Retiring Carbon Credits on Celo using Toucan SDK
 
 # CarbonHero
-## By Dennis Kimathi 
+## By Dennis Kimathi | Samson | Mbuvi Muasya
 
 ## Screenshot
  ![image](./toucanproject)
 
  ## Table of Content
- - [Description](#description)
+ - [Demo](#demo)
  - [Features](#features)
  - [Requirements](#requirements)
  - [Installation Process](#installation-Process)
@@ -20,6 +20,11 @@
 
 
 [Go Back to the top](#CarbonHero)
+
+
+## Demo
+
+
 ## Features
 1. As a user, I want to redeem NCT for TCO2 - Tokenized Carbon Credit.
 2. A user can retire TC02
