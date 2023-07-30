@@ -23,7 +23,7 @@
 
 ## Demo video
 
-
+https://github.com/DennohKim/Celo-Code-Jam-3.0/assets/63696529/19df3d56-75d6-40f8-925e-aebc27eca585
 
 [Go Back to the top](#CeloDev-Stream-Web-app)
 ## Features
@@ -53,6 +53,10 @@
 Celo Composer is built on Celo to make it simple to build dApps using a variety of front-end frameworks, and libraries.
 
 - [Celo](https://celo.org/)
+
+https://github.com/DennohKim/Celo-Code-Jam-3.0/assets/63696529/7c6bed42-fcbe-4a9c-91be-08436a8dda30
+
+
 - [Solidity](https://docs.soliditylang.org/en/v0.8.19/)
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
