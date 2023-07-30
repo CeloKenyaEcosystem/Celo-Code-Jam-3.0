@@ -4,6 +4,12 @@
 ## Screenshot
  ![image](./app-screenshot.png)
 
+
+## Celo Code Jam Theme Tracks
+
+  - __UI/UX Track__  &  __Social Impact__
+
+
  ## Table of Content
  - [Demo Video](#demo-video)
  - [Features](#features)
