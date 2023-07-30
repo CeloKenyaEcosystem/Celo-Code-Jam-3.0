@@ -53,16 +53,11 @@ https://github.com/DennohKim/Celo-Code-Jam-3.0/assets/63696529/19df3d56-75d6-40f
 Celo Composer is built on Celo to make it simple to build dApps using a variety of front-end frameworks, and libraries.
 
 - [Celo](https://celo.org/)
-
-https://github.com/DennohKim/Celo-Code-Jam-3.0/assets/63696529/7c6bed42-fcbe-4a9c-91be-08436a8dda30
-
-
 - [Solidity](https://docs.soliditylang.org/en/v0.8.19/)
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
 - [Shadcn UI](https://ui.shadcn.com/)
 - [Rainbowkit-celo](https://github.com/celo-org/rainbowkit-celo)
-
 - [Superfluid-finance](https://www.superfluid.finance/)
 
 Superfluid is a revolutionary asset streaming protocol that brings subscriptions, salaries, vesting, and rewards to DAOs and crypto-native businesses worldwide.
