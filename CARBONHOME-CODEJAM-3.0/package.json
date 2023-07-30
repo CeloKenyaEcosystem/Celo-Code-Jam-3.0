@@ -1,0 +1,37 @@
+{
+    "name": "carbonxchange-toucan",
+    "version": "1.0.0",
+    "description": "Custom Celo Composer project.",
+    "private": true,
+    "author": "Celo",
+    "license": "MIT",
+    "scripts": {
+        "react-app:dev": "yarn workspace @carbonxchange-toucan/react-app dev",
+        "react-app:build": "yarn workspace @carbonxchange-toucan/react-app build",
+        "react-app:start": "yarn workspace @carbonxchange-toucan/react-app start",
+        "react-app:lint": "yarn workspace @carbonxchange-toucan/react-app lint",
+        "hardhat:test": "yarn workspace @carbonxchange-toucan/hardhat test",
+        "hardhat:test-local": "yarn workspace @carbonxchange-toucan/hardhat test-local",
+        "hardhat:accounts": "yarn workspace @carbonxchange-toucan/hardhat accounts",
+        "hardhat:devchain": "yarn workspace @carbonxchange-toucan/hardhat devchain",
+        "hardhat:deploy": "yarn workspace @carbonxchange-toucan/hardhat deploy",
+        "hardhat:deploy-reset-watch": "yarn workspace @carbonxchange-toucan/hardhat deploy-reset-watch",
+        "hardhat:watch": "yarn workspace @carbonxchange-toucan/hardhat watch",
+        "hardhat:fork-mainnet": "yarn workspace @carbonxchange-toucan/hardhat fork-mainnet"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/celo-org/celo-composer.git"
+    },
+    "bugs": {
+        "url": "https://github.com/celo-org/celo-composer/issues"
+    },
+    "homepage": "https://github.com/celo-org/celo-composer/blob/main/README.md",
+    "workspaces": [
+        "packages/*"
+    ],
+    "keywords": [
+        "celo-composer",
+        "celo"
+    ]
+}
