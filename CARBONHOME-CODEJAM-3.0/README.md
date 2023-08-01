@@ -4,7 +4,7 @@
 ## By Dennis Kimathi | Samson | Mbuvi Muasya
 
 ## Screenshot
- ![image](./toucanproject)
+ ![image](./toucanproject.png)
 
  ## Table of Content
  - [Demo](#demo)
