@@ -13,7 +13,7 @@ The Code Jam Theme Tracks are specific categories or themes for participants to 
     - Build a decentralized web application that prioritize on the design, usability aspects, user interface and overall user experience.
 
  - __E-commerce Track:__
-		- Innovate new methods for secure, efficient, and decentralized e-commerce platforms and supplychain.
+    - Innovate new methods for secure, efficient, and decentralized e-commerce platforms and supplychain.
   
   
  ## Code Jam Repo Process
