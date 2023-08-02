@@ -1,0 +1,16 @@
+{
+  "name": "verichain-dapp",
+  "version": "1.0.0",
+  "description": "A supply chain marketplace on the Celo Protocol.",
+  "main": "index.js",
+  "repository": "https://github.com/ffmongare/celo-veriChain-dapp.git",
+  "author": "Kachi <kachdekan@gmail.com>, Frank <>, Tevin <> and Sam <samwelmoyi@gmail.com>", 
+  "license": "Apache 2.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "nohoist": [
+
+  ],
+  "private": true
+}
