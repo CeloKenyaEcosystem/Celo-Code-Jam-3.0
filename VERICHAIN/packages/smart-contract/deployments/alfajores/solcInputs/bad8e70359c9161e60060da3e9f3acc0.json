@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/SupplyChainTracking.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract SupplyChainTracking {\n    // Status system\n    enum ShipmentStatus { PENDING, IN_TRANSIT, DELIVERED }\n\n    // Product information\n    struct Shipment {\n        address sender;\n        address receiver;\n        // string location; figure out how to add location\n        uint256 pickupTime;\n        uint256 deliveryTime;\n        uint256 distance;\n        uint256 price;\n        ShipmentStatus status;\n        bool isPaid;\n    }\n\n    // Keep track of the shipment\n    mapping(address => Shipment[]) public shipments;\n\n    // Keep track of the number of shipments\n    uint256 public shipmentCount;\n\n    // Second struct for display purpose on the GUI\n    struct TypeShipment {\n        address sender;\n        address receiver;\n        uint256 pickupTime;\n        uint256 deliveryTime;\n        uint256 distance;\n        uint256 price;\n        ShipmentStatus status;\n        bool isPaid;\n    }\n\n    // Array for entire shipment status\n    TypeShipment[] typeShipments;\n  \n    event ShipmentCreated(address indexed sender, address indexed receiver, uint256 pickupTime, uint256 distance, uint256 price);\n    event ShipmentInTransit(address indexed sender, address indexed receiver, uint256 pickupTime);\n    event ShipmentDelivered(address indexed sender, address indexed receiver, uint256 deliveryTime);\n    event ShipmentPaid(address indexed sender, address indexed receiver, uint256 amount);\n\n    constructor() {\n        shipmentCount = 0;\n    }\n\n    // function to create shipment\n    function createShipment(address _receiver, uint256 _pickupTime, uint256 _distance, uint256 _price) public payable {\n        require(msg.value == _price, \"Payment amount must match the price.\");\n\n        Shipment memory shipment = Shipment(msg.sender, _receiver, _pickupTime, 0, _distance, _price, ShipmentStatus.PENDING, false);\n\n        shipments[msg.sender].push(shipment);\n        shipmentCount++;\n\n        typeShipments.push(TypeShipment(msg.sender, _receiver, _pickupTime, 0, _distance, _price, ShipmentStatus.PENDING, false));\n\n        emit ShipmentCreated(msg.sender, _receiver, _pickupTime, _distance, _price);\n    }\n\n    // * Modify the index to index to more of an unique id\n    function startShipment(address _sender, address _receiver, uint256 _index) public {\n        Shipment storage shipment = shipments[_sender][_index];\n        TypeShipment storage typeShipment = typeShipments[_index];\n\n        require(shipment.receiver == _receiver, \"Invalid receiver.\");\n        require(shipment.status == ShipmentStatus.PENDING, \"Shipment already in transit.\");\n\n        shipment.status = ShipmentStatus.IN_TRANSIT;\n        typeShipment.status = ShipmentStatus.IN_TRANSIT;\n\n        emit ShipmentInTransit(_sender, _receiver, shipment.pickupTime);\n    }\n\n    function completeShipment(address _sender, address _receiver, uint256 _index) public {\n        Shipment storage shipment = shipments[_sender][_index];\n        TypeShipment storage typeShipment = typeShipments[_index];\n\n        require(shipment.receiver == _receiver, \"Invalid receiver.\");\n        require(shipment.status == ShipmentStatus.IN_TRANSIT, \"Shipment not in transit.\");\n        require(!shipment.isPaid, \"Shipment already paid.\");\n\n        shipment.status = ShipmentStatus.DELIVERED;\n        typeShipment.status = ShipmentStatus.DELIVERED;\n        typeShipment.deliveryTime = block.timestamp;\n        shipment.deliveryTime = block.timestamp;\n\n        uint256 amount = shipment.price;\n\n        payable(shipment.sender).transfer(amount);\n\n        shipment.isPaid = true;\n        typeShipment.isPaid = true;\n\n        emit ShipmentDelivered(_sender, _receiver, shipment.deliveryTime);\n        emit ShipmentPaid(_sender, _receiver, amount);\n    }\n\n    function getShipment(address _sender, uint256 _index) public view returns (\n        address,\n        address,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        ShipmentStatus,\n        bool) {\n            Shipment memory shipment = shipments[_sender][_index];\n\n            return (\n                shipment.sender, \n                shipment.receiver, \n                shipment.pickupTime,\n                shipment.deliveryTime,\n                shipment.distance,\n                shipment.price,\n                shipment.status,\n                shipment.isPaid);\n        }\n\n    function getShipmentsCount(address _sender) public view returns (uint256) {\n        return shipments[_sender].length;\n    }\n\n    function getAllTransactions() public view returns (TypeShipment[] memory) {\n        return typeShipments;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
