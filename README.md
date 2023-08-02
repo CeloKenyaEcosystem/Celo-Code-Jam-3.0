@@ -7,10 +7,13 @@ The Code Jam Theme Tracks are specific categories or themes for participants to 
     - Build decentralized web applications facilitating within DeFi.
 
  - __Social Impact, Inclusivity Track:__ 
- 	- Build a decentralized web applications focused on social impact within ReFi and Defi.
+ 	  - Build a decentralized web applications focused on social impact within ReFi and Defi.
  	
   - __UI/UX Track:__
      - Build a decentralized web application that prioritize on the design, usability aspects, user interface and overall user experience.
+
+	- __E-commerce Track:__
+		- Innovate new methods for secure, efficient, and decentralized e-commerce platforms and supplychain.
   
   
  ## Code Jam Repo Process

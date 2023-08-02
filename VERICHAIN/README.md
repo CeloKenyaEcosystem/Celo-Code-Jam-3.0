@@ -1,12 +1,21 @@
 # ⚡ VERICHAIN ⚡
 
 ### A supply chain marketplace on the Celo Protocol
+#### Ecommerce/Supplychain Track
 
 #### Project Description
 
 In the modern global supply chain system, it's difficult for businesses and individuals to track and verify the movement of goods. There are delays, disputes, increased costs and fraudelent activities.
 
 We want to improve the tracking of goods and services across the supply chain to ensure transparency, reduce fraud  and increase user trust. Without an efficient supply chain; revenue is lost, customers become dissatisfied as the lack of transparency increases the likelihood of fraud.The global supply chain market is projected to reach $46.5 billion by 2030. With the existing innovative blockchain technology in our hands, it's easy to create a secure and tamper-proof record of the entire supply chain that ensures data integrity and reduces fraud.
+
+#### Team
+
+- Tevin Milla - Product Manager
+- Frank Mongare - Blockchain Developer
+- Derrick Kachisa - Fullstack Engineer
+- Samuel Moyi - Frontend Engineer
+- Jessica Karuiki - Team Lead
 
 #### Summary
 
