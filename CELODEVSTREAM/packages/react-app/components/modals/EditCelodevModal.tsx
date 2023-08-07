@@ -9,6 +9,7 @@ import { waitForTransaction } from '@wagmi/core';
 
 import { useContractSend } from '@/hooks/contracts/useContractWrite';
 import { useRouter } from 'next/navigation';
+import { useAccount } from 'wagmi';
 
 interface celodevProps {
   id: number;
@@ -27,6 +28,7 @@ interface celodevProps {
 const EditCelodevModal = ({ id, celodev }: celodevProps) => {
 
 	const router = useRouter();
+	const { address } = useAccount();
 
   const [visible, setVisible] = useState(false);
   const [celodevName, setCelodevName] = useState(celodev.name);
@@ -95,6 +97,7 @@ const EditCelodevModal = ({ id, celodev }: celodevProps) => {
       debouncedPaymentCurrency,
       debouncedTaskDescription,
       debouncedCelodevRewardAmount,
+	  address
     ]
   );
 

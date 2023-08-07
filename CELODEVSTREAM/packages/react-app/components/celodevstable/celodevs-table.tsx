@@ -1,178 +1,62 @@
-import { useContractCall } from '@/hooks/contracts/useContractRead'
-import columns from './columns'
-import { DataTable } from './data-table'
-import { celodevsType } from './data/schema'
-import { useAppData } from '@/providers/AppDataProvider'
+import { useAccount, useContractRead } from 'wagmi';
+import { celodevsContract, celodevsDetailsAbi } from '@/constants/constants';
+import { useEffect, useState } from 'react';
+import columns from './columns';
+import { DataTable } from './data-table';
+import { iCelodevsDetails } from '@/typings';
 
-const employeeData: celodevsType[] = [
-//   {
-//     index: 1,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 1,
-//     employee_name: 'Chizaa',
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
+interface EmployeeTableProps {
+  id: number;
+}
 
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 2,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
+export default function EmployeeTable({ id }: EmployeeTableProps) {
+  const { address } = useAccount();
+  const {
+    data: rawProduct,
+    isError,
+    isLoading,
+  }: any = useContractRead({
+    address: celodevsContract,
+    abi: celodevsDetailsAbi,
+    functionName: 'getCelodevDetails',
+    args: [id, address],
+    onError(error) {
+      console.log('Error', error);
+    },
+  });
 
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
+  const [celodevsDetails, setCelodevsDetails] =
+    useState<iCelodevsDetails | null>(null);
 
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 3,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
+  useEffect(() => {
+    const getFormatProduct = () => {
+      if (!rawProduct) return;
+      setCelodevsDetails({
+        index: id,
+        owner: rawProduct[0],
+        name: rawProduct[1],
+        walletAddress: rawProduct[2],
+        paymentCurrency: rawProduct[3],
+        taskDescription: rawProduct[4],
+        rewardAmount: rawProduct[5],
+        dateCaptured: rawProduct[6],
+      });
+    };
 
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
+    getFormatProduct();
+  }, [rawProduct, id]);
 
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 4,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 5,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 6,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 7,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 8,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 9,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 10,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 11,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 12,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
-//   {
-//     index: 13,
-//     owner: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-
-//     employee_name: 'Chizaa',
-//     address: '0xce7Ff9D05dD37DD1C86364670c18d92561549954',
-//     payment_method: 'cUSD',
-//     employee_salary: 3,
-
-//     date: '20 Jan 2022, 09.00 PM',
-//   },
- ];
-
-
-
-
-export default function EmployeeTable() {
-
-	//   const { data }: any = useContractCall('readProduct', [id], true)
-
-	const { celodevsDetails } = useAppData()
-	console.log(celodevsDetails)
-
-
-	return (
-		<div className="container mx-auto py-6">
-			<DataTable columns={columns} data={celodevsDetails} />
-		</div>
-	)
+  return (
+    <div className='container mx-auto py-6'>
+      {celodevsDetails ? (
+        <DataTable columns={columns} data={[celodevsDetails]} />
+      ) : (
+        <div>No Celodev details available.</div>
+      )}
+    </div>
+  );
 }

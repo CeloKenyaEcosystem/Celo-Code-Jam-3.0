@@ -4,6 +4,7 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import { useContractDelete } from '@/hooks/contracts/useContractDelete';
 import { waitForTransaction } from '@wagmi/core';
 import { useRouter } from 'next/navigation';
+import { useAccount } from 'wagmi';
 
 
 interface Props {
@@ -13,11 +14,12 @@ interface Props {
 const DeleteCelodevModal = ({ id }: Props) => {
 
 	const router = useRouter();
+	const { address } = useAccount();
 
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState('');
 
-  const { writeAsync: deleteCelodevFunc } = useContractDelete(id);
+  const { writeAsync: deleteCelodevFunc } = useContractDelete(id, address as `0x${string}`);
 
   const handleDeleteCelodev = async () => {
     if (!deleteCelodevFunc) {

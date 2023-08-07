@@ -1,17 +1,15 @@
-# CeloDev Stream Web App
+
+
+# CeloDev Stream Web App - Superfluid Wave Pool Hackathon
 ## By Dennis Kimathi | Anthony Kimani
 
 ## Screenshot
  ![image](./app-screenshot.png)
 
 
-## Celo Code Jam Theme Tracks
-
-  - __UI/UX Track__  &  __Social Impact__
-
-
  ## Table of Content
  - [Demo Video](#demo-video)
+ - [Pitch Deck](#pitch-deck)
  - [Features](#features)
  - [Requirements](#requirements)
  - [Installation Process](#installation-Process)
@@ -26,6 +24,11 @@
 https://github.com/DennohKim/Celo-Code-Jam-3.0/assets/63696529/19df3d56-75d6-40f8-925e-aebc27eca585
 
 [Go Back to the top](#CeloDev-Stream-Web-app)
+
+## Pitch Deck
+
+- [Presentation](https://www.canva.com/design/DAFqAIn-oz0/hwpLK41Org9InJtID-Fevg/edit?utm_content=DAFqAIn-oz0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 ## Features
 1. As a user, I want to create, update and delete developer details so that I can stream funds to their wallet address.
 2. As a user, I want to send cUSD to a developer using superfluid.

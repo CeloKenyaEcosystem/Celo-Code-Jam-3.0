@@ -1,16 +1,17 @@
 import { useContractWrite, usePrepareContractWrite } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { celodevsContract, celodevsDetailsAbi } from '@/constants/constants';
+import { add } from 'date-fns';
 
 // write to a smart contract
-export const useContractDelete = (id: number) => {
+export const useContractDelete = (id: number, address: string) => {
   const gasLimit = BigNumber.from(1000000);
 
   const { config } = usePrepareContractWrite({
     address: celodevsContract,
     abi: celodevsDetailsAbi,
     functionName: 'deletecelodevsDetails',
-    args: [id],
+    args: [id, address],
     // overrides: {
     //   gasLimit,
     // },

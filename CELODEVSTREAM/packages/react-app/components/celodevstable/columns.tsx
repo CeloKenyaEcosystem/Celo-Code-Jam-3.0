@@ -60,9 +60,10 @@ const columns: ColumnDef<celodevsType>[] = [
       <DataTableColumnHeader column={column} title='Date Added' />
     ),
     cell: ({ row }) => {
-      const convertedDate = row.getValue('dateCaptured') as number;
+      const convertedDate = row.getValue('dateCaptured');
+      const numberValue = Number(convertedDate); 
 
-      return <div>{convertBlockTimestampToDate(convertedDate)}</div>;
+      return <div>{convertBlockTimestampToDate(numberValue)}</div>;
     },
   },
 

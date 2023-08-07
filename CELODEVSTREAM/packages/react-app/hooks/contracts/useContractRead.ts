@@ -1,4 +1,4 @@
-import { celodevsDetailsAbi } from '@/constants/constants';
+import { celodevsContract, celodevsDetailsAbi } from '@/constants/constants';
 import { useContractRead } from 'wagmi';
 
 export const useContractCall = (
@@ -8,7 +8,7 @@ export const useContractCall = (
   from?: `0x${string}` | undefined
 ) => {
   const resp = useContractRead({
-    address: '0x19b68555839C65bD34455E52f24486f1dbf9fbEb',
+    address: celodevsContract,
     abi: celodevsDetailsAbi,
     functionName: functionName,
     args,
