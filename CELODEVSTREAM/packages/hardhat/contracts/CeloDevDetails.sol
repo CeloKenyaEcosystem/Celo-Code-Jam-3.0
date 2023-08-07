@@ -36,16 +36,16 @@ contract CelodevsDetails {
 
     event CelodevDetailsDeleted(address indexed owner, uint256 indexed index);
 
-    modifier onlyCelodevOwner(uint256 _index) {
+    modifier onlyCelodevOwner(uint256 _index, address user) {
         require(
-            CelodevsByUser[msg.sender][_index].owner == msg.sender,
+            CelodevsByUser[user][_index].owner == user,
             "You are not authorized to perform this action"
         );
         _;
     }
 
-    modifier validCelodevIndex(uint256 _index) {
-        require(_index < userCelodevCount[msg.sender], "Invalid Celodev index");
+    modifier validCelodevIndex(uint256 _index, address user) {
+        require(_index < userCelodevCount[user], "Invalid Celodev index");
         _;
     }
 
@@ -54,11 +54,12 @@ contract CelodevsDetails {
         address _walletAddress,
         string memory _paymentCurrency,
         string memory _taskDescription,
-        uint256 _rewardAmount
+        uint256 _rewardAmount,
+		address user
     ) external {
-        CelodevsByUser[msg.sender].push(
+        CelodevsByUser[user].push(
             Celodev(
-                payable(msg.sender),
+                payable(user),
                 _name,
                 _walletAddress,
                 _paymentCurrency,
@@ -69,7 +70,7 @@ contract CelodevsDetails {
         );
 
         // Increase the total count of Celodevs for the user
-        userCelodevCount[msg.sender]++;
+        userCelodevCount[user]++;
 
         emit CelodevDetailsCaptured(
             _walletAddress,
@@ -82,11 +83,12 @@ contract CelodevsDetails {
     }
 
     function getCelodevDetails(
-        uint256 _index
+        uint256 _index,
+		address user
     )
         external
         view
-        validCelodevIndex(_index)
+		validCelodevIndex(_index, user)
         returns (
             address payable owner,
             string memory name,
@@ -97,7 +99,7 @@ contract CelodevsDetails {
             uint256 dateCaptured
         )
     {
-        Celodev memory celodev = CelodevsByUser[msg.sender][_index];
+        Celodev memory celodev = CelodevsByUser[user][_index];
         return (
             celodev.owner,
             celodev.name,
@@ -115,9 +117,10 @@ contract CelodevsDetails {
         string memory _name,
         string memory _paymentCurrency,
 		string memory _taskDescription,
-        uint256 _rewardAmount
-    ) external validCelodevIndex(_index) onlyCelodevOwner(_index) {
-        Celodev storage celodev = CelodevsByUser[msg.sender][_index];
+        uint256 _rewardAmount,
+		address user
+    ) external validCelodevIndex(_index, user) onlyCelodevOwner(_index, user) {
+        Celodev storage celodev = CelodevsByUser[user][_index];
         celodev.name = _name;
         celodev.walletAddress = _walletAddress;
         celodev.paymentCurrency = _paymentCurrency;
@@ -134,12 +137,13 @@ contract CelodevsDetails {
     }
 
     function deleteCelodevDetails(
-        uint256 _index
-    ) external validCelodevIndex(_index) onlyCelodevOwner(_index) {
+        uint256 _index,
+		address user
+    ) external validCelodevIndex(_index, user) onlyCelodevOwner(_index, user) {
         // Delete the Celodev from the array and move the last Celodev to the deleted position for gas optimization
-        uint256 lastIndex = userCelodevCount[msg.sender] - 1;
-        Celodev storage lastCelodev = CelodevsByUser[msg.sender][lastIndex];
-        Celodev storage CelodevToDelete = CelodevsByUser[msg.sender][_index];
+        uint256 lastIndex = userCelodevCount[user] - 1;
+        Celodev storage lastCelodev = CelodevsByUser[user][lastIndex];
+        Celodev storage CelodevToDelete = CelodevsByUser[user][_index];
         CelodevToDelete.name = lastCelodev.name;
         CelodevToDelete.walletAddress = lastCelodev.walletAddress;
         CelodevToDelete.paymentCurrency = lastCelodev.paymentCurrency;
@@ -149,12 +153,12 @@ contract CelodevsDetails {
         CelodevToDelete.owner = lastCelodev.owner;
 
         // Decrease the total count of Celodevs for the user
-        userCelodevCount[msg.sender]--;
+        userCelodevCount[user]--;
 
-        emit CelodevDetailsDeleted(msg.sender, _index);
+        emit CelodevDetailsDeleted(user, _index);
     }
 
-    function getNumberOfCelodevs() external view returns (uint256) {
-        return userCelodevCount[msg.sender];
-    }
+   function getNumberOfCelodevs(address user) external view returns (uint256) {
+    return userCelodevCount[user];
+}
 }

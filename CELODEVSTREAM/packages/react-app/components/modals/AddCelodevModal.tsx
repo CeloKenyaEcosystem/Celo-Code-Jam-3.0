@@ -8,6 +8,7 @@ import { waitForTransaction } from '@wagmi/core';
 import { useRouter } from 'next/navigation';
 
 const AddCelodevModal = () => {
+	const { address } = useAccount();
 
 	const router = useRouter()
 
@@ -52,6 +53,7 @@ const AddCelodevModal = () => {
       debouncedCelodevPaymentCurrency,
       debouncedCelodevTaskDescription,
       CelodevRewardAmountInWei,
+	  address
     ]
   );
 

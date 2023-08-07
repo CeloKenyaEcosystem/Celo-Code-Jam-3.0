@@ -9,6 +9,7 @@ import LoadingAlert from '@/components/alerts/LoadingAlert';
 import SuccessAlert from '@/components/alerts/SuccessAlert';
 import { NextPage } from 'next';
 import Layout from '@/components/Layout';
+import { useAppData } from '@/providers/AppDataProvider';
 
 // Alerts component
 const Alerts = ({ error, success, loading, clear }: any) => {
@@ -21,6 +22,7 @@ const Alerts = ({ error, success, loading, clear }: any) => {
   );
 };
 const CelodevsPage: NextPage = () => {
+	const { getDevs } = useAppData()
   // Define the states to store the error, success and loading messages
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -31,7 +33,7 @@ const CelodevsPage: NextPage = () => {
     setSuccess('');
     setLoading('');
   };
-  // D
+  
   return (
       <Layout>
         <Alerts
@@ -42,7 +44,7 @@ const CelodevsPage: NextPage = () => {
         />
 
         <AddEmployeeModal />
-        <EmployeeTable />
+		{getDevs()}
       </Layout>
   );
 };

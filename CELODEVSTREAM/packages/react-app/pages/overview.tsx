@@ -10,51 +10,19 @@ import Layout from '@/components/Layout';
 const Overview = () => {
   //const { data } = useContractCall('getNumberOfEmployees', [], true);
 
-  //   const {address}= useAccount();
-  //      const { data, isError, isLoading } = useContractRead({
-  //        address: celodevsContract,
-  //        abi: celodevsDetailsAbi,
-  //        functionName: 'getNumberOfCelodevs',
-  //        args: [address],
-  //      });
+    const {address}= useAccount();
+       const { data, isError, isLoading } = useContractRead({
+         address: celodevsContract,
+         abi: celodevsDetailsAbi,
+         functionName: 'getNumberOfCelodevs',
+         args: [address],
+       });
 
-  //     // // Convert the data to a number
-  //     const celodevsLength = data ? Number(data.toString()) : 0;
+      // // Convert the data to a number
+      const celodevsLength = data ? Number(data.toString()) : 0;
 
-  // 	console.log(celodevsLength)
+  	console.log(celodevsLength)
 
-  const [numberOfCelodevs, setNumberOfCelodevs] = useState(0);
-  async function getItemLength() {
-    try {
-      const provider = new ethers.providers.Web3Provider(
-        window.ethereum as any
-      );
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(
-        celodevsContract,
-        celodevsDetailsAbi,
-        signer
-      );
-
-      const getNumberOfCelodevs = await contract.getNumberOfCelodevs();
-      return getNumberOfCelodevs;
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  //get my products
-  useEffect(() => {
-    getItemLength().then((data) => {
-      setNumberOfCelodevs(data);
-      console.log(data);
-    });
-  }, []);
-
-  const celodevsLength = numberOfCelodevs
-    ? ethers.BigNumber.from(numberOfCelodevs).toString()
-    : 0;
-  console.log(celodevsLength);
 
   return (
     <Layout>
